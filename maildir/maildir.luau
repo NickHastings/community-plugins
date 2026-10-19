@@ -50,10 +50,10 @@ function onClick()
       noctalia.log("Maildir: Click command not set")
       return
    end
-   local base_cmd, _ = cmd:match("^(.-)%s+(.+)$")
    local available = noctalia.commandExists(base_cmd)
    if not available then
       noctalia.notifyError("Maildir", "command not found: " .. cmd)
+   local base_cmd = cmd:match("%S+")
       return
    end
    noctalia.runAsync(cmd)
